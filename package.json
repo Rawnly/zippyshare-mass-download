@@ -1,6 +1,6 @@
 {
-  "name": "downloadzshare",
-  "version": "1.0.0",
+  "name": "zshare",
+  "version": "0.1.0",
   "main": "app/libs/core.js",
   "license": "MIT",
   "bin": {
