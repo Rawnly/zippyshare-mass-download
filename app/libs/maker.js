@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const chalk = require('chalk');
 const printBlock = require("@splash-cli/print-block");
@@ -23,9 +24,11 @@ module.exports = async function (input, {
 		}
 
 		const file = fs.readFileSync(source, 'utf8')
-		const json = makeJSONFromArray(file);
+		const json = makeJSONFromArray(file)
 
-		return fs.writeFile(path.join(destination, getFileName(source.replace(/\.[a-z]$/, '.json'))), JSON.stringify(json, null, 2), error => {
+		mkdir.sync(destination)
+
+		return fs.writeFile(path.join(destination, getFileName(source.replace(/\.\w+$/, '.json'))), JSON.stringify(json, null, 2), error => {
 			if (error) return reject(error);
 
 			printBlock(chalk `Your file has been created! {underline ${destination}}`)
