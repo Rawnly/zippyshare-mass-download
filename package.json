@@ -1,10 +1,10 @@
 {
   "name": "zshare",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "app/libs/core.js",
   "license": "MIT",
   "bin": {
-    "zshare": "./app/bin/index"
+    "zshare": "app/bin/index.js"
   },
   "dependencies": {
     "@splash-cli/path-fixer": "^1.0.2",
