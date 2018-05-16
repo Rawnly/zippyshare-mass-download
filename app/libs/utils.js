@@ -103,3 +103,14 @@ module.exports.getFileName = url => {
 module.exports.readJson = file => {
 	return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
+
+module.exports.makeJSONFromArray = content => {
+	return content
+		.split('\n')
+		.map(item => item.replace(/\s+/, ''))
+		.filter(item => item.length > 1)
+}
+
+module.exports.writeJSON = (content, p) => {
+	return fs.writeFileSync(p, JSON.stringify(content, null, 2))
+}
