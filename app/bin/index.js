@@ -41,27 +41,30 @@ async function client(input, {
 	source,
 	destination
 }) {
+
 	if (!input) {
 		return pb(chalk `Invalid {bold {yellow command}}!`, '- make', '- download', '', 'zshare --help for more')
 	}
+
+	if (!source || !destination) {
+		return pb(chalk `Invalid {bold {yellow source/destination}}!`, '- make', '- download', '', 'zshare --help for more')
+	}
+
+	source = pf(source);
+	destination = pf(destination);
+
 	switch (input) {
 		case "download":
-			if (!source || !destination) {
-				return pb(chalk `Invalid {bold {yellow source/destination}}!`, '- make', '- download', '', 'zshare --help for more')
-			}
-
-			source = pf(source);
-			destination = pf(destination);
-			await downloader(source, destination)
+			await downloader([], {
+				source,
+				destination
+			})
 			break;
 		case "make":
-			if (!source || !destination) {
-				return pb(chalk `Invalid {bold {yellow source/destination}}!`, '- make', '- download', '', 'zshare --help for more')
-			}
-
-			source = pf(source);
-			destination = pf(destination);
-			await maker(source, destination)
+			await maker([], {
+				source,
+				destination
+			})
 			break;
 		default:
 			return pb(chalk `Invalid {bold {yellow command}} "{red ${input}}"!`, '- make', '- download', '', 'zshare --help for more')
