@@ -2,24 +2,31 @@
 
 const Meow = require('meow');
 const chalk = require('chalk');
-const core = require('../libs/core');
+const downloader = require('../libs/downloader');
+const maker = require('../libs/maker');
 
-const cli = Meow(chalk`
-	{green $} {yellow zippyshare} [path] [flags]
+const cli = Meow(chalk `
+	{green $} {yellow zshare} {cyan <cmd> <flags>}
 
-	{yellow --destination -d}
-	{yellow --source -s}
+	FLAGS (valid for all commands):
+		{yellow --destination -d} {cyan <path>}
+		{yellow --source -s}	 {cyan <path>}
 
-	{dim Examples:}
-		{green $} {yellow zippyshare} {dim {underline ~/Desktop/episodes.json} --destination {underline ~/Movies/SERIES/my-serie/}}
-		{green $} {yellow zippyshare} {dim --source {underline ~/Desktop/episodes.json} --destination {underline ~/Movies/SERIES/my-serie}}
-		{green $} {yellow zippyshare} {dim --source {underline ~/Desktop/episodes.json}}
+	COMMANDS:
+		{cyan make <flags>}		{gray | Generated a json file from a list}
+		{cyan download <flags>}	{gray | Download files from a json list}
+	
+	USAGE:
+		{green $} {yellow zshare} {cyan make --source} {underline ~/Desktop/list.txt} {cyan --destination} {underline ~/Desktop}
+		
+		{dim # Then}
+
+		{green $} {yellow zshare} {cyan download --source} {underline ~/Desktop/list.json} {cyan --destination} {underline ~/Movies}
 `, {
 	flags: {
 		destination: {
 			alias: 'd',
-			type: 'string',
-			default: '~/Downloads'
+			type: 'string'
 		},
 		source: {
 			alias: 's',
@@ -28,10 +35,26 @@ const cli = Meow(chalk`
 	}
 })
 
-async function client(input, {source, destination}) {
-	if (!input && !source) throw new SyntaxError('Expected source file')
+async function client(input, {
+	source,
+	destination
+}) {
+	if (!source || !destination) throw new SyntaxError('Expected source/destination')
 
-	await core(source || input, destination)
+	source = pf(source);
+	destination = pf(destination);
+
+	switch (input) {
+		case "download":
+			await downloader(source, destination)
+			break;
+		case "make":
+			await maker(source, destination)
+			break;
+		default:
+			printBlock(chalk `{red Invalid argument {bold "${input}"}}`)
+			break;
+	}
 }
 
 client(cli.input[0], cli.flags);
