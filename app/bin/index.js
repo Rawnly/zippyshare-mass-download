@@ -4,6 +4,8 @@ const Meow = require('meow');
 const chalk = require('chalk');
 const downloader = require('../libs/downloader');
 const maker = require('../libs/maker');
+const pb = require('@splash-cli/print-block')
+const pf = require('@splash-cli/path-fixer')
 
 const cli = Meow(chalk `
 	{green $} {yellow zshare} {cyan <cmd> <flags>}
@@ -39,20 +41,30 @@ async function client(input, {
 	source,
 	destination
 }) {
-	if (!source || !destination) throw new SyntaxError('Expected source/destination')
-
-	source = pf(source);
-	destination = pf(destination);
-
+	if (!input) {
+		return pb(chalk `Invalid {bold {yellow command}}!`, '- make', '- download', '', 'zshare --help for more')
+	}
 	switch (input) {
 		case "download":
+			if (!source || !destination) {
+				return pb(chalk `Invalid {bold {yellow source/destination}}!`, '- make', '- download', '', 'zshare --help for more')
+			}
+
+			source = pf(source);
+			destination = pf(destination);
 			await downloader(source, destination)
 			break;
 		case "make":
+			if (!source || !destination) {
+				return pb(chalk `Invalid {bold {yellow source/destination}}!`, '- make', '- download', '', 'zshare --help for more')
+			}
+
+			source = pf(source);
+			destination = pf(destination);
 			await maker(source, destination)
 			break;
 		default:
-			printBlock(chalk `{red Invalid argument {bold "${input}"}}`)
+			return pb(chalk `Invalid {bold {yellow command}} "{red ${input}}"!`, '- make', '- download', '', 'zshare --help for more')
 			break;
 	}
 }
