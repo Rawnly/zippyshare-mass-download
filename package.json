@@ -16,5 +16,27 @@
     "mkdirp": "^0.5.1",
     "ora": "^2.1.0",
     "simple-download": "^0.5.1"
-  }
+  },
+  "description": "> Download zippyshare files directly on your machine",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo 'test'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rawnly/zippyshare-mass-download.git"
+  },
+  "keywords": [
+    "zippyshare",
+    "zshare",
+    "downloader",
+    "serie",
+    "tvshows",
+    "tvshow"
+  ],
+  "author": "Federico Vitale <fedevitale99@gmail.com> (federicovitale.me)",
+  "bugs": {
+    "url": "https://github.com/Rawnly/zippyshare-mass-download/issues"
+  },
+  "homepage": "https://github.com/Rawnly/zippyshare-mass-download#readme"
 }
