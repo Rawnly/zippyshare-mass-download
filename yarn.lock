@@ -368,7 +368,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-got@^8.0.3, got@^8.3.1:
+got@^8.3.1:
   version "8.3.1"
   resolved "https://registry.yarnpkg.com/got/-/got-8.3.1.tgz#093324403d4d955f5a16a7a8d39955d055ae10ed"
   dependencies:
@@ -518,7 +518,7 @@ jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
 
-jsdom@^11.10.0, jsdom@^11.6.2:
+jsdom@^11.10.0:
   version "11.10.0"
   resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-11.10.0.tgz#a42cd54e88895dc765f03f15b807a474962ac3b5"
   dependencies:
@@ -1177,10 +1177,3 @@ yargs-parser@^10.0.0:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-10.0.0.tgz#c737c93de2567657750cb1f2c00be639fd19c994"
   dependencies:
     camelcase "^4.1.0"
-
-zippyshare-extractor@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/zippyshare-extractor/-/zippyshare-extractor-0.2.0.tgz#b8865780973d3f827649652c47e3f3b1c4a197f4"
-  dependencies:
-    got "^8.0.3"
-    jsdom "^11.6.2"
