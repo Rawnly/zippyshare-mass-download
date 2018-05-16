@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rawnly/zippyshare-mass-download.git"
+    "url": "git+https://github.com/Rawnly/zshare.git"
   },
   "keywords": [
     "zippyshare",
@@ -36,7 +36,7 @@
   ],
   "author": "Federico Vitale <fedevitale99@gmail.com> (federicovitale.me)",
   "bugs": {
-    "url": "https://github.com/Rawnly/zippyshare-mass-download/issues"
+    "url": "https://github.com/Rawnly/zshare/issues"
   },
-  "homepage": "https://github.com/Rawnly/zippyshare-mass-download#readme"
+  "homepage": "https://github.com/Rawnly/zshare#readme"
 }
